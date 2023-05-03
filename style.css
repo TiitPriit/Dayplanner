@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #ddd;
+}
+.current-time {
+    background-color: #ffcc00;
+}
+.hours-left {
+    background-color: #99ff99;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day scheduler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>Time Table</h1>
+	<table>
+		<tr>
+			<th>Time</th>
+			<th>Activity</th>
+			<th>Hours Left</th>
+		</tr>
+		<tr>
+			<td>9:00 AM</td>
+			<td>Exercise</td>
+			<td class="hours-left">7</td>
+		</tr>
+		<tr>
+			<td>10:00 AM</td>
+			<td>Work Meeting</td>
+			<td class="hours-left">6</td>
+		</tr>
+		<tr>
+			<td>11:00 AM</td>
+			<td>Reply to Emails</td>
+			<td class="hours-left">5</td>
+		</tr>
+		<tr>
+			<td>12:00 PM</td>
+			<td>Lunch Break</td>
+			<td class="hours-left">4</td>
+		</tr>
+		<tr>
+			<td>1:00 PM</td>
+				<td>Work on Project</td>
+			<td class="hours-left">3</td>
+		</tr>
+		<tr>
+			<td>2:00 PM</td>
+			<td>Phone Meeting</td>
+			<td class="hours-left">2</td>
+		</tr>
+		<tr>
+			<td>3:00 PM</td>
+			<td>Errands</td>
+			<td class="hours-left">1</td>
+		</tr>
+		<tr>
+			<td class="current-time">4:00 PM</td>
+			<td>Plan for Tomorrow</td>
+			<td class="hours-left">0</td>
+		</tr>
+	</table>
+	<script>
+		// Get current time
+		var currentTime = new Date();
+		var currentHour = currentTime.getHours();
+		
+		// Set current time cell background color
+		var currentCell = document.getElementsByTagName("td")[currentHour-9];
+		currentCell.className += " current-time";
+		
+		// Set hours left cell values
+		var hoursLeftCells = document.getElementsByClassName("hours-left");
+		for (var i = 0; i < hoursLeftCells.length; i++) {
+			hoursLeftCells[i].innerHTML = hoursLeftCells[i].innerHTML - (currentHour-9);
+			if (hoursLeftCells[i].innerHTML < 0) {
+				hoursLeftCells[i].innerHTML = 0;
+			}
+		}
+	</script>
+</body>
+</html>
+
+</body>
+</html>

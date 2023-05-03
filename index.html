@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive Day Scheduler</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		td, th {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: center;
+		}
+		th {
+			background-color: #ddd;
+		}
+		.time-selected {
+			background-color: #99ff99;
+		}
+	</style>
+</head>
+<body>
+	<h1>Interactive Day Scheduler</h1>
+	<p>Select a time slot to schedule an activity:</p>
+	<table>
+		<tr>
+			<th>Time</th>
+			<th>Activity</th>
+		</tr>
+		<tr>
+			<td>12:00</td>
+			<td id="activity-0"></td>
+		</tr>
+		<tr>
+			<td>13:00</td>
+			<td id="activity-1"></td>
+		</tr>
+		<tr>
+			<td>14:00</td>
+			<td id="activity-2"></td>
+		</tr>
+        <tr>
+			<td>15:00</td>
+			<td id="activity-3"></td>
+		</tr>
+        <tr>
+			<td>16:00</td>
+			<td id="activity-4"></td>
+		</tr>
+        <tr>
+			<td>17:00</td>
+			<td id="activity-5"></td>
+		</tr>
+        <tr>
+			<td>18:00</td>
+			<td id="activity-6"></td>
+		</tr>
+        <tr>
+			<td>19:00</td>
+			<td id="activity-7"></td>
+		</tr>
+        <tr>
+			<td>20:00</td>
+			<td id="activity-8"></td>
+		</tr>
+        <tr>
+			<td>21:00</td>
+			<td id="activity-9"></td>
+		</tr>
+        <tr>
+			<td>22:00</td>
+			<td id="activity-2"></td>
+		</tr>
+		<tr>
+			<td>23:00</td>
+			<td id="activity-23"></td>
+		</tr>
+	</table>
+	<script>
+		var selectedTime = null;
+
+		var timeSlots = document.getElementsByTagName("td");
+		for (var i = 0; i < timeSlots.length; i++) {
+			timeSlots[i].addEventListener("click", function() {
+
+				if (selectedTime !== null) {
+					selectedTime.className = "";
+				}
+				this.className = "time-selected";
+				selectedTime = this;
+				
+				var activity = prompt("Enter activity for " + this.parentNode.firstChild.innerHTML);
+				this.innerHTML = activity;
+			});
+		}
+	</script>
+</body>
+</html>
