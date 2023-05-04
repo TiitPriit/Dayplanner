@@ -1,24 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Time Management</title>
-	<style>
-		label {
-			display: inline-block;
-			width: 120px;
-			text-align: right;
-			margin-right: 10px;
-		}
-		input[type="number"] {
-			width: 50px;
-		}
-        canvas {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 200px;
-            height: 200px;
-        }
-	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DAYPLANNER</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h1>Time Management</h1>
@@ -39,55 +26,19 @@
 		<input type="text" id="task4Name" name="task4Name" placeholder="Enter task name">
 		<input type="number" id="task4" name="task4" min="0" max="24"> hours<br><br>
 
+		<label for="task5">Task 5:</label>
+		<input type="text" id="task5Name" name="task5Name" placeholder="Enter task name">
+		<input type="number" id="task5" name="task5" min="0" max="24"> hours<br><br>
 
-		<button type="button" onclick="calculateTime()">Calculate</button><br><br>
+		<button type="button" class="button-81" onclick="calculateTime()">Calculate</button><br><br>
 
-		<label for="timeLeft">Time Left:</label>
+		<label for="timeLeft" class="time-left">Time Left:</label>
 			<input type="text" id="timeLeft" readonly>
 	</form>
 
     <canvas id="pieChart"></canvas>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script>
-		function calculateTime() {
-			let task1Name = document.getElementById("task1Name").value;
-			let task2Name = document.getElementById("task2Name").value;
-			let task3Name = document.getElementById("task3Name").value;
-			let task4Name = document.getElementById("task4Name").value;
-			let task1 = Number(document.getElementById("task1").value);
-			let task2 = Number(document.getElementById("task2").value);
-			let task3 = Number(document.getElementById("task3").value);
-			let task4 = Number(document.getElementById("task4").value);
-			let totalSpentTime = task1 + task2 + task3 + task4;
-			let timeLeft = 24 - totalSpentTime;
-			document.getElementById("timeLeft").value = timeLeft + " hours";
-
-			let data = {
-				labels: [task1Name, task2Name, task3Name, task4Name],
-				datasets: [
-					{
-						label: "Time spent",
-						data: [task1, task2, task3, task4],
-						backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
-					}
-				]
-			};
-
-			let options = {
-				title: {
-					display: true,
-					text: "Time spent on each task"
-				}
-			};
-
-			let ctx = document.getElementById("pieChart").getContext("2d");
-			let pieChart = new Chart(ctx, {
-				type: "pie",
-				data: data,
-				options: options
-			});
-		}
-	</script>
+	<script src="app.js"></script>
 </body>
 </html>
